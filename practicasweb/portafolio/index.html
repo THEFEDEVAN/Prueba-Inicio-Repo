@@ -2,7 +2,7 @@
 EN ESTE CASO DE EL PORTAFOLIO WEB, POR LO TANTO ESTA ESTRUCTURA PUEDE VARIAR SEGUN NUESTRO PROYECTO.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <!-- ESPECIFICA EL IDIOMA DEL CONTENIDO DEL DOCUMENTO-->
@@ -14,7 +14,7 @@ EN ESTE CASO DE EL PORTAFOLIO WEB, POR LO TANTO ESTA ESTRUCTURA PUEDE VARIAR SEG
     <meta name="keywords" content="portafolio, desarrollo web, [programador], proyectos, contacto">
     <meta name="author"content=" Tu Nombre">
     <title>portafolio</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Css/style.css">
 </head>
 <body>
      
@@ -32,46 +32,57 @@ EN ESTE CASO DE EL PORTAFOLIO WEB, POR LO TANTO ESTA ESTRUCTURA PUEDE VARIAR SEG
             </ul>
         </nav>
     </header>
-<main class="main-content">
-        <section id="sobremi" class="hero-section">
-            <article class="hero-card">
-                <span class="badge">Disponible para trabajar</span>
-                <h2>Soy <strong>Técnico Universitario en Programación</strong></h2>
-                <p class="subtitle">Egresado de la Universidad Tecnológica Nacional (UTN) - FRSR, Argentina.</p>
-                <p class="description">
-                    Me apasiona el desarrollo de software y la creación de soluciones web originales, escalables y personalizadas. Enfocado en escribir código limpio y optimizar la experiencia de usuario.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#contacto" class="btn btn-primary">Contáctame</a>
-                    <a href="#proyectos" class="btn btn-secondary">Ver Proyectos</a>
-                </div>
-            </article>
-        </section>
-    </main>
+</header>
+<main>
+    <section class="sobremi">
+        <article class="container-sobremi">
+            <img class="img-perfil" src="./Assets/perfil.jpg" alt="fotografia de Federico Vantuch" width="200" height="200">
+            <h2>
+                Soy <b>Técnico Universitario en Programación</b>, egresado de la Universidad Tecnológica Nacional
+                (UTN) - FRSR, Argentina.
+                Me apasiona programar y desarrollar soluciones de aplicaciones web originales y personalizadas.
+            </h2>
+        </article>
+    </section>
 
-<!-- Sección Experiencia -->
-<section id="experiencia" class="experiencia">
-  <h2>Experiencia Laboral</h2>
-  <div class="container-experiencia">
-    <article>
-      <h3>Desarrollador Web Freelance</h3>
-      <p class="fecha">2024 - Presente</p>
-      <p>Desarrollo y diseño de sitios web adaptativos, optimización de experiencia de usuario y mantenimiento de plataformas web.</p>
-    </article>
-  </div>
-</section>
+   <!--clase 3 Agregamos 2 secciones mas Experiencia y Estudios-->
+    <section id="experiencia" class="experiencia">
+        <article class="container-experiencia">
+            <h2>Experiencia Laboral</h2>
+            
+            <h3>Community Manager & Marketing Digital</h3>
+            <h4>Junio 2026 - Presente</h4>
+            <p>Gestión de redes sociales, creación de contenido digital y estrategia de marketing para clientes como HEXA Desarrollos Civiles, Híper Pinturería y Tonar.</p>
 
-<!-- Sección Estudios -->
+            <h3>Mecánico de Bicicletas</h3>
+            <h4>ModoMono / Lalik Bike </h4>
+            <p>Mantenimiento preventivo y correctivo, armado y reparación integral de bicicletas.</p>
+
+            <h3>Control de Stock y Carga de Productos</h3>
+            <h4>Roller Bike</h4>
+            <p>Revisión y control de inventario, recepción y carga de productos en sistema.</p>
+
+            <h3>Atención y Mantenimiento</h3>
+            <h4>Renta Bike</h4>
+            <p>Mantenimiento de bicicletas y atención al cliente.</p>
+        </article>
+    </section>
+
 <section id="estudios" class="estudios">
-  <h2>Mis Estudios</h2>
-  <div class="container-estudios">
-    <article>
-      <h3>Tecnicatura Universitaria en Programación</h3>
-      <p class="institucion">Universidad Tecnológica Nacional (UTN - FRSR)</p>
-      <p class="fecha">2024 - En curso</p>
-    </article>
-  </div>
-</section>
+        <article class="container-estudios">
+            <h2>Mis Estudios</h2>
+
+            <h3>Tecnicatura Universitaria en Programación</h3>
+            <h4>Universidad Tecnológica Nacional (UTN) — En curso</h4>
+            <p>Formación en desarrollo de software, algoritmos, bases de datos y tecnologías web.</p>
+
+            <h3>Educación Secundaria</h3>
+            <h4>Título Secundario — Completo</h4>
+
+            <h3>Educación Primaria</h3>
+            <h4>Título Primario — Completo</h4>
+        </article>
+    </section>
 
 </body>
 </html>

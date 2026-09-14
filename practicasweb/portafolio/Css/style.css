@@ -186,16 +186,115 @@ body {
   margin-bottom: 2rem;
 }
 
+/* Sección Sobre Mí (del profesor) */
+.container-sobremi {
+    display: flex;
+    width: 50%; /* ancho */
+    padding: 2rem;
+    margin-top: 5rem; /* margen a lo alto */
+    line-height: 2.5rem; /* espaciado entre los párrafos del texto */
+    font-size: large; /* tamaño de la fuente */
+    color: #1e293b; /* O 'azure' si la sección tiene fondo oscuro */
+    gap: 5rem; /* Corregido sin espacio entre 5 y rem */
+    align-items: center;
+}
+
+.img.perfil{
+    border-radius: 50%;
+}
+
+.experiencia, .estudios{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    color: rgb(0, 0, 0);
+}
+
+.container-experiencia, .container-estudios{
+    width: 100%;
+    padding: 2rem;
+    margin-top: 5rem;
+    line-height: 2.5rem;
+    font-size: large;
+    margin: 8rem;
+}
+
 .fecha {
   font-weight: bold;
-  color: #64748b;
+  color: #000000;
   font-size: 0.9rem;
 }
 
-/* Reglas Responsive (Media Queries) */
-@media (max-width: 768px) {
-  .container-experiencia, .container-estudios {
-    width: 100%;
-    padding: 1rem;
-  }
+/* Media Queries agrupadas */
+
+/* Celular (Pantallas pequeñas, hasta 767px) */
+@media (max-width: 767px) {
+    .titulo {
+        justify-content: center;
+    }
+
+    .navigation {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .container-sobremi{
+        width: 100%;
+        padding: 1rem; /* Corregido 'padding: 1;' agregando 'rem' */
+        margin-top: 1rem; /* margen a lo alto */
+        line-height: 2.5rem; /* espaciado entre los parrafos del texto*/
+        font-size: small; /* tamaño de la fuente */
+        flex-direction: column;
+    }
+
+    /*Agregando el responsivo de las secciones experiencia y estudios */
+    .container-experiencia, .container-estudios{
+        width: 100%;
+        margin: 0rem;
+    }
+
+    .experiencia, .estudios{
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        font-size: small;
+    }
+}
+
+
+/* Tableta (Pantallas medianas, entre 768px y 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .titulo {
+        justify-content: center;
+    }
+
+    .navigation {
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    /*Agregando el responsivo de las secciones experiencia y estudios */
+    .experiencia, .estudios{
+        width: 75%;
+    }
+}
+
+
+/* Escritorio (Pantallas anchas, 1024px y superiores) */
+@media (min-width: 1024px) {
+    .titulo {
+        justify-content: flex-start;
+    }
+
+    .navigation {
+        gap: 3rem;
+        justify-content: flex-end;
+        margin: 0 3rem;
+    }
+
+    /*Agregando el responsivo de las secciones experiencia y estudios */
+    .experiencia, .estudios{
+        width: 75%;
+    }
 }
