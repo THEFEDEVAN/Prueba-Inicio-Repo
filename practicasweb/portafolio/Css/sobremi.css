@@ -1,0 +1,46 @@
+.sobremi{
+    display: flex;
+    justify-content: center; /* Esto centra el elemento */
+}
+
+.container-sobremi{
+    display: flex;
+    width: 50%; /*ancho*/
+    padding: 2rem;
+    margin-top: 5rem; /* margen a lo alto */
+    line-height: 2.5rem; /* espaciado entre los parrafos del texto */
+    font-size: large; /* tamaño de la fuente */
+    color: azure;
+    gap: 5rem;
+    align-items: center;
+}
+
+.img-perfil{
+    border-radius: 50%;
+}
+
+/* Celular (Pantallas pequeñas, hasta 767px) */
+@media (max-width: 767px) {
+    .container-sobremi{
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem; /* margen a lo alto */
+        line-height: 2.5rem; /* espaciado entre los parrafos del texto */
+        font-size: small; /* tamaño de la fuente */
+        flex-direction: column;
+    }
+}
+
+/* Tableta (Pantallas medianas, entre 768px y 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container-sobremi{
+        width: 75%;
+    }
+}
+
+/* Escritorio (Pantallas anchas, 1024px y superiores) */
+@media (min-width: 1024px) {
+    .container-sobremi{
+        width: 50%;
+    }
+}
