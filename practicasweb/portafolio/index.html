@@ -1,119 +1,586 @@
-<!--ES DE BUENAS PRACTICAS COMENZAR A ESTRUCTURAR NUESTRO ARCHIVOS ORDENADO LA ESTRUCTURA PARA EL DESARROYO
-EN ESTE CASO DE EL PORTAFOLIO WEB, POR LO TANTO ESTA ESTRUCTURA PUEDE VARIAR SEGUN NUESTRO PROYECTO.
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- ESPECIFICA EL IDIOMA DEL CONTENIDO DEL DOCUMENTO-->
-     <meta http-equiv="content-lenguage" content="es">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federico Vantuch | Técnico en Programación</title>
 
-    <!--AGREGAMOS DOS ETIQUETAS META PARA EL SEO DE LA CLAE ANTEORIOR MAS OTRA ETIQUETA META LA DEL AUTOR-->
-    <meta name="descripcion" content="Nombre del Grupo o alumno, creado por nombre del grupo especializado en [Programacion]">
-    <meta name="keywords" content="portafolio, desarrollo web, [programador], proyectos, contacto">
-    <meta name="author"content=" Tu Nombre">
-    <title>portafolio</title>
-    <link rel="stylesheet" href="./Css/style.css">
-    <link rel="stylesheet" href="./Css/sobremi.css">
-    <link rel="stylesheet" href="./Css/experiencia.css">
-    <link rel="stylesheet" href="./Css/estudios.css">
-    <link rel="stylesheet" href="./Css/proyectos.css">
+    <!-- Fuente Inter (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================================
+           1. VARIABLES Y REGLAS GENERALES
+           ========================================================= */
+        :root {
+            --bg-principal: #0f172a;       /* Fondo oscuro estilo GitHub/Tailwind */
+            --bg-tarjeta: #1e293b;         /* Fondo de tarjetas */
+            --bg-header: rgba(15, 23, 42, 0.9);
+            --color-primario: #6366f1;     /* Violeta / Índigo moderno */
+            --color-primario-hover: #4f46e5;
+            --color-texto: #f8fafc;        /* Texto blanco principal */
+            --color-texto-secundario: #94a3b8; /* Texto gris suave */
+            --borde-color: #334155;        /* Borde tenue de las tarjetas */
+            --fuente-principal: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fuente-principal);
+            background-color: var(--bg-principal);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        /* Contenedor centralizado para limitar el ancho de las secciones */
+        .contenedor {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* =========================================================
+           2. BARRA DE NAVEGACIÓN (NAVBAR)
+           ========================================================= */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--bg-header);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--borde-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-texto);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--color-primario);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--color-texto-secundario);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primario);
+        }
+
+        /* =========================================================
+           3. HERO / PRESENTACIÓN PRINCIPAL
+           ========================================================= */
+        .hero {
+            padding: 80px 0 60px 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .foto-perfil {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-primario);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            margin: 0 auto 24px auto;
+            display: block;
+        }
+
+        .hero-titulo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitulo {
+            font-size: 1.15rem;
+            color: var(--color-texto-secundario);
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-botones {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================================
+           4. BOTONES ESTILIZADOS
+           ========================================================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primario {
+            background-color: var(--color-primario);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primario:hover {
+            background-color: var(--color-primario-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secundario {
+            background-color: var(--bg-tarjeta);
+            color: var(--color-texto);
+            border: 1px solid var(--borde-color);
+        }
+
+        .btn-secundario:hover {
+            border-color: var(--color-primario);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           5. ESTILOS DE SECCIONES GENERALES
+           ========================================================= */
+        .seccion {
+            padding: 70px 0;
+            border-top: 1px solid var(--borde-color);
+        }
+
+        .titulo-seccion {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .linea-decorativa {
+            width: 50px;
+            height: 4px;
+            background-color: var(--color-primario);
+            margin: 0 auto 40px auto;
+            border-radius: 2px;
+        }
+
+        /* =========================================================
+           6. TARJETAS (TARJETA CONTENEDORA GENERAL)
+           ========================================================= */
+        .tarjeta {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid var(--borde-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tarjeta:hover {
+            border-color: var(--color-primario);
+            transform: translateY(-3px);
+        }
+
+        .tarjeta-encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tarjeta-titulo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-texto);
+        }
+
+        .tarjeta-subtitulo {
+            color: var(--color-primario);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta-descripcion {
+            color: var(--color-texto-secundario);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .badge-tiempo {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--color-texto-secundario);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--borde-color);
+        }
+
+        /* =========================================================
+           7. GRID DE PROYECTOS
+           ========================================================= */
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .tarjeta-proyecto {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid var(--borde-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tarjeta-proyecto:hover {
+            border-color: var(--color-primario);
+            transform: translateY(-4px);
+        }
+
+        .proyecto-header-icon {
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--borde-color);
+            color: var(--color-primario);
+            font-size: 2.5rem;
+        }
+
+        .proyecto-cuerpo {
+            padding: 20px;
+        }
+
+        .proyecto-tecnologias {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            background-color: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            border-radius: 4px;
+        }
+
+        .proyecto-botones {
+            padding: 16px 20px;
+            border-top: 1px solid var(--borde-color);
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+        }
+
+        /* =========================================================
+           8. CONTENEDOR DE CONTACTO (GOOGLE FORMS EMBED)
+           ========================================================= */
+        .contenedor-formulario {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid var(--borde-color);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .contenedor-formulario iframe {
+            width: 100%;
+            height: 850px;
+            border: none;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* =========================================================
+           9. PIE DE PÁGINA (FOOTER)
+           ========================================================= */
+        .footer {
+            border-top: 1px solid var(--borde-color);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--color-texto-secundario);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+           10. DISEÑO RESPONSIVO (DISEÑO PARA CELULARES)
+           ========================================================= */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Simplificado para evitar JS complejo en primer año */
+            }
+            .hero-titulo {
+                font-size: 1.9rem;
+            }
+            .contenedor-formulario iframe {
+                height: 950px; /* Ajuste para formularios más largos en móviles */
+            }
+        }
+    </style>
 </head>
 <body>
-     
-    <header>
-        <h1 class="logo">Tu Nombre - Técnico en Programación</h1>
-        <img src="" alt="">
-        <nav>
-            <!--AGREGAMOS NUEVOS ENLACES PARA NUESTRO PORTAFOLIO WEB-->
-            <ul class="navigation">
-                <li><a href="#sobremi">Sobre mí</a></li>
-                <li><a href="#experiencia">Experencia</a></li>
-                <li><a href="#estudios">Mis estudios</a></li>
-                <li><a href="#proyecto">Proyectos</a></li>
-                <li><a href="#contacto">Contactame</a></li>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="header">
+        <div class="contenedor nav-container">
+            <a href="#" class="logo">Federico<span>.Vantuch</span></a>
+            <ul class="nav-menu">
+                <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+                <li><a href="#estudios" class="nav-link">Mis Estudios</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
-</header>
-<main class="main-container">
-    <section class="sobremi">
-        <article class="container-sobremi">
-            <img class="img-perfil" src="./Assets/perfil.jpg" alt="fotografia de Federico Vantuch" width="200" height="200">
-            <h2>
-                Soy <b>Técnico Universitario en Programación</b>, egresado de la Universidad Tecnológica Nacional
-                (UTN) - FRSR, Argentina.
-                Me apasiona programar y desarrollar soluciones de aplicaciones web originales y personalizadas.
-            </h2>
-        </article>
-    </section>
 
-   <!--clase 3 Agregamos 2 secciones mas Experiencia y Estudios-->
-    <section id="experiencia" class="experiencia">
-        <article class="container-experiencia">
-            <h2>Experiencia Laboral</h2>
-            
-            <h3>Community Manager & Marketing Digital</h3>
-            <h4>Junio 2026 - Presente</h4>
-            <p>Gestión de redes sociales, creación de contenido digital y estrategia de marketing para clientes como HEXA Desarrollos Civiles, Híper Pinturería y Tonar.</p>
+    <!-- HERO / SOBRE MÍ -->
+    <section id="sobre-mi" class="hero contenedor">
+        <span class="hero-badge"><i class="fa-solid fa-code"></i> Técnico Universitario en Programación</span>
+        
+        <!-- Foto de perfil redonda (puedes reemplazar 'assets/perfil.jpg' por la ruta de tu imagen) -->
+        <img src="https://placehold.co/200x200/1e293b/6366f1?text=FV" alt="Foto de Federico Vantuch" class="foto-perfil">
+        
+        <h1 class="hero-titulo">Hola, soy Federico Vantuch</h1>
+        <p class="hero-subtitulo">
+            Egresado / Estudiante de la <strong>Universidad Tecnológica Nacional (UTN - FRSR)</strong>, Argentina. 
+            Me apasiona la programación y el desarrollo de aplicaciones web originales y personalizadas.
+        </p>
 
-            <h3>Mecánico de Bicicletas</h3>
-            <h4>ModoMono / Lalik Bike </h4>
-            <p>Mantenimiento preventivo y correctivo, armado y reparación integral de bicicletas.</p>
-
-            <h3>Control de Stock y Carga de Productos</h3>
-            <h4>Roller Bike</h4>
-            <p>Revisión y control de inventario, recepción y carga de productos en sistema.</p>
-
-            <h3>Atención y Mantenimiento</h3>
-            <h4>Renta Bike</h4>
-            <p>Mantenimiento de bicicletas y atención al cliente.</p>
-        </article>
-    </section>
-
-    section id="estudios" class="estudios">
-        <article class="container-estudios">
-            <h2>Mis Estudios</h2>
-
-            <h3>Tecnicatura Universitaria en Programación</h3>
-            <h4>Universidad Tecnológica Nacional (UTN) — En curso</h4>
-            <p>Formación en desarrollo de software, algoritmos, bases de datos y tecnologías web.</p>
-
-            <h3>Educación Secundaria</h3>
-            <h4>Título Secundario — Completo</h4>
-
-            <h3>Educación Primaria</h3>
-            <h4>Título Primario — Completo</h4>
-        </article>
-    </section>
-
-    <section id="proyectos" class="proyecto">
-         <h2>Proyectos</h2>
-         <div class="galeria-proyectos">
-         <div class="proyectos">
-            <h3>Proyecto 1</h3>
-            <p>
-                Descripcion breve del proyecto
-            </p>
-            <a href="#">Ver más</a>
-            <a href="#">GitHub</a>
-            <a href="#">Tecnologias</a>
-        </div>
-        <div class="proyecto">
-            <h3>Proyecto 2</h3>
-            <p>
-                Descripcion breve del proyecto
-            </p>
-            <a href="#">Ver más</a>
-            <a href="#">GitHub</a>
-            <a href="#">Tecnologias</a>
-        </div>
-        <!--Aqui se pueden agregar mas proyectos-->
+        <div class="hero-botones">
+            <a href="#proyectos" class="btn btn-primario"><i class="fa-solid fa-briefcase"></i> Ver Proyectos</a>
+            <a href="#contacto" class="btn btn-secundario"><i class="fa-solid fa-envelope"></i> Contactarme</a>
         </div>
     </section>
 
+    <!-- EXPERIENCIA LABORAL -->
+    <section id="experiencia" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Experiencia Laboral</h2>
+            <div class="linea-decorativa"></div>
 
-   </main>
+            <!-- Tarjeta 1 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Community Manager & Marketing Digital</h3>
+                    <span class="badge-tiempo">Junio 2024 - Presente</span>
+                </div>
+                <div class="tarjeta-subtitulo">Gestión de Redes & Estrategia Digital</div>
+                <p class="tarjeta-descripcion">
+                    Gestión de redes sociales, creación de contenido digital y estrategia de marketing para clientes como HEXA Desarrollos Civiles, Híper Pinturería y marcas independientes.
+                </p>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Monitoreo y Control de Inventario</h3>
+                    <span class="badge-tiempo">Roller Bike / VantuchBikes</span>
+                </div>
+                <div class="tarjeta-subtitulo">Gestión de Stock y Carga de Productos</div>
+                <p class="tarjeta-descripcion">
+                    Revisión y control de inventario, recepción y carga de productos en el sistema administrativo de la empresa.
+                </p>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Atención y Mantenimiento</h3>
+                    <span class="badge-tiempo">Renta Bike</span>
+                </div>
+                <div class="tarjeta-subtitulo">Servicio Técnico y Atención al Cliente</div>
+                <p class="tarjeta-descripcion">
+                    Mantenimiento de bicicletas y atención al cliente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MIS ESTUDIOS -->
+    <section id="estudios" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Mis Estudios</h2>
+            <div class="linea-decorativa"></div>
+
+            <!-- Estudio 1 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Tecnicatura Universitaria en Programación</h3>
+                    <span class="badge-tiempo">UTN - FRSR</span>
+                </div>
+                <div class="tarjeta-subtitulo">Universidad Tecnológica Nacional — En curso</div>
+                <p class="tarjeta-descripcion">
+                    Formación en desarrollo de software, algoritmos, lógica de programación, bases de datos y tecnologías web.
+                </p>
+            </div>
+
+            <!-- Estudio 2 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Educación Secundaria</h3>
+                    <span class="badge-tiempo">Completo</span>
+                </div>
+                <p class="tarjeta-descripcion">Título Secundario — Completo</p>
+            </div>
+
+            <!-- Estudio 3 -->
+            <div class="tarjeta">
+                <div class="tarjeta-encabezado">
+                    <h3 class="tarjeta-titulo">Educación Primaria</h3>
+                    <span class="badge-tiempo">Completo</span>
+                </div>
+                <p class="tarjeta-descripcion">Título Primario — Completo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Proyectos</h2>
+            <div class="linea-decorativa"></div>
+
+            <div class="grid-proyectos">
+                <!-- Proyecto 1 -->
+                <div class="tarjeta-proyecto">
+                    <div>
+                        <div class="proyecto-header-icon">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="proyecto-cuerpo">
+                            <div class="proyecto-tecnologias">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <h3 class="tarjeta-titulo" style="margin-bottom: 8px;">Portafolio Web Personal</h3>
+                            <p class="tarjeta-descripcion">
+                                Sitio web personal responsive creado con HTML5 y CSS3 para mostrar experiencia y proyectos académicos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="proyecto-botones">
+                        <a href="#" class="btn btn-primario btn-sm">Ver más</a>
+                        <a href="#" class="btn btn-secundario btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="tarjeta-proyecto">
+                    <div>
+                        <div class="proyecto-header-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <div class="proyecto-cuerpo">
+                            <div class="proyecto-tecnologias">
+                                <span class="tech-tag">Algoritmos</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                            <h3 class="tarjeta-titulo" style="margin-bottom: 8px;">Sistema de Gestión de Stock</h3>
+                            <p class="tarjeta-descripcion">
+                                Proyecto universitario para el control de inventarios, altas, bajas y modificación de productos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="proyecto-botones">
+                        <a href="#" class="btn btn-primario btn-sm">Ver más</a>
+                        <a href="#" class="btn btn-secundario btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Contacto</h2>
+            <div class="linea-decorativa"></div>
+
+            <!-- Contenedor adaptado para Google Forms Embed -->
+            <div class="contenedor-formulario">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfjW0aDwffsn4xSgHAPM9pE3P29iL5E8LWqfzD-5a_tgQQ5BA/viewform?usp=header" 
+                    width="100%" 
+                    height="850" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Cargando…
+                </iframe>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
